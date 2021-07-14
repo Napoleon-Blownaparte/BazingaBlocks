@@ -1,9 +1,11 @@
 package net.bazingablocks.org.backend;
 
 import net.bazingablocks.org.Main;
+import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 import java.io.File;
@@ -97,6 +99,7 @@ public class LuckyBlockFile {
         File file = new File(plugin.getDataFolder(), "luckyblocks.yml");
         FileConfiguration yml = YamlConfiguration.loadConfiguration(file);
 
+        // Check for holograms config
         if (yml.getConfigurationSection("luckyblocks.holograms") == null){
             for (String lb : yml.getConfigurationSection("luckyblocks").getKeys(false)) {
                 yml.set("luckyblocks." + lb + ".hologram.text", "&7You won &cREWARD&7!");
@@ -108,6 +111,15 @@ public class LuckyBlockFile {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+
+    }
+
+    public static void reload(){
+
+        save();
+        for (Player player : Bukkit.getOnlinePlayers()){
+            player.sendMessage(Messages.format("&6&lBazinga&e&lBlocks &8» &7Reloaded the plugin and checked for updates."));
         }
 
     }

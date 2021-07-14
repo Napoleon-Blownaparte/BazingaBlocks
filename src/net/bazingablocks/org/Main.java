@@ -16,7 +16,7 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new LuckyBlockEvent(), this);
 
         // Register Commands
-        this.getCommand("luckyblock").setExecutor(new LuckyBlockCommand());
+        this.getCommand("bb").setExecutor(new LuckyBlockCommand());
 
     }
 

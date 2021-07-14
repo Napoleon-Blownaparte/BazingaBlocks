@@ -19,11 +19,11 @@ public class LuckyBlockCreateMenu implements Listener {
 
     private static Plugin plugin = Main.getPlugin(Main.class);
     private static String ver = plugin.getDescription().getVersion();
-    private static String auth = plugin.getDescription().getAuthors().get(1);
+    private static String auth = plugin.getDescription().getAuthors().get(0);
 
     public static void open(Player player){
 
-        Inventory inv = Bukkit.createInventory(null, 54, Messages.format("&6&lBazinga&e&lBlocks &8» &eAdd a reward"));
+        Inventory inv = Bukkit.createInventory(null, 54, Messages.format("&6&lBazinga&e&lBlocks &8» &eConfigure"));
 
         // Header and footer
         ItemStack b = new ItemStack(Material.BLACK_STAINED_GLASS_PANE); ItemStack g = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
@@ -61,7 +61,7 @@ public class LuckyBlockCreateMenu implements Listener {
         Player player = Bukkit.getPlayer(event.getWhoClicked().getName());
         Integer slot = event.getSlot();
 
-        if (event.getView().getTitle().equalsIgnoreCase(Messages.format("&6&lBazinga&e&lBlocks &8» &eAdd a reward"))){
+        if (event.getView().getTitle().equalsIgnoreCase(Messages.format("&6&lBazinga&e&lBlocks &8» &eConfigure"))){
 
             event.setCancelled(true);
 

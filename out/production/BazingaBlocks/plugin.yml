@@ -6,7 +6,6 @@ author: Bahhzinga
 description: Reward your players for mining!
 
 commands:
-  luckyblock:
-    aliases: [lb, luckblock, bazingablock, bb]
+  bb:
     permission: bazingablocks.admin
     description: Manage your lucky blocks!
