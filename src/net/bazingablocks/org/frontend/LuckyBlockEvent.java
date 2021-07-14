@@ -22,7 +22,7 @@ public class LuckyBlockEvent implements Listener {
     private static Plugin plugin = Main.getPlugin(Main.class);
 
     @EventHandler
-    public void onBreak(BlockBreakEvent event){
+    public void onBreak(BlockBreakEvent event){ // Lucky Blocks :D
 
         Player player = event.getPlayer();
         Block block = event.getBlock();
