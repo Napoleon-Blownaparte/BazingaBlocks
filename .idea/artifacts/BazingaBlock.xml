@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="BazingaBlock">
+    <output-path>$PROJECT_DIR$/out/artifacts/BazingaBlock</output-path>
+    <root id="archive" name="BazingaBlock.jar">
+      <element id="module-output" name="BazingaBlocks" />
+    </root>
+  </artifact>
+</component>
