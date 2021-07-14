@@ -1,12 +1,10 @@
 package net.bazingablocks.org.frontend;
 
 import net.bazingablocks.org.Main;
+import net.bazingablocks.org.backend.Holograms;
 import net.bazingablocks.org.backend.LuckyBlockFile;
 import net.bazingablocks.org.backend.Messages;
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
-import org.bukkit.Particle;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -64,6 +62,11 @@ public class LuckyBlockEvent implements Listener {
                             if (LuckyBlockFile.get().getBoolean("luckyblocks." + lb + ".effects.lightning") == true){
                                 block.getWorld().strikeLightningEffect(block.getLocation());
                             }
+
+                            // Spawn hologram
+                            Location loc = block.getLocation();
+                            loc.setY(loc.getY()+2);
+                            Holograms.create("&7You won REWARD&7!".replaceAll("REWARD", LuckyBlockFile.get().getString("luckyblocks." + lb + ".rewards." + rewards + ".rewardName")), loc);
 
                             // Play particles
                             block.getWorld().spawnParticle(Particle.valueOf(LuckyBlockFile.get().getString("luckyblocks." + lb + ".effects.particle")), block.getLocation(), 200);
