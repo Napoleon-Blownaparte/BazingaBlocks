@@ -65,8 +65,10 @@ public class LuckyBlockEvent implements Listener {
 
                             // Spawn hologram
                             Location loc = block.getLocation();
-                            //loc.setY(loc.getY()+1);
-                            Holograms.create("&7You won REWARD&7!".replaceAll("REWARD", LuckyBlockFile.get().getString("luckyblocks." + lb + ".rewards." + rewards + ".rewardName")), loc);
+                            loc.setY(loc.getY()+LuckyBlockFile.get().getInt("luckyblocks." + lb + ".hologram.heightOffset"));
+                            Holograms.create(LuckyBlockFile.get().getString("luckyblocks." + lb + ".hologram.text")
+                                    .replaceAll("REWARD", LuckyBlockFile.get().getString("luckyblocks." + lb + ".rewards." + rewards + ".rewardName")), loc,
+                                    LuckyBlockFile.get().getInt("luckyblocks." + lb + ".hologram.duration"));
 
                             // Play particles
                             block.getWorld().spawnParticle(Particle.valueOf(LuckyBlockFile.get().getString("luckyblocks." + lb + ".effects.particle")), block.getLocation(), 200);

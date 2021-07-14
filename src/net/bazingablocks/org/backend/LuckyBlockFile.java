@@ -48,6 +48,10 @@ public class LuckyBlockFile {
             try {
                 yml.save(file);
                 System.out.println("[BazingaBlocks] Successfully saved file 'luckyblocks.yml'");
+
+                // Update config
+                updateConfig();
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -84,6 +88,26 @@ public class LuckyBlockFile {
                 e.printStackTrace();
             }
 
+        }
+
+    }
+
+    private static void updateConfig(){
+
+        File file = new File(plugin.getDataFolder(), "luckyblocks.yml");
+        FileConfiguration yml = YamlConfiguration.loadConfiguration(file);
+
+        if (yml.getConfigurationSection("luckyblocks.holograms") == null){
+            for (String lb : yml.getConfigurationSection("luckyblocks").getKeys(false)) {
+                yml.set("luckyblocks." + lb + ".hologram.text", "&7You won &cREWARD&7!");
+                yml.set("luckyblocks." + lb + ".hologram.duration", 3);
+                yml.set("luckyblocks." + lb + ".hologram.heightOffset", 1);
+            }
+            try {
+                yml.save(file);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
     }
