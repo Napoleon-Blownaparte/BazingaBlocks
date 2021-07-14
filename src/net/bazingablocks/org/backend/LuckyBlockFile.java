@@ -119,7 +119,9 @@ public class LuckyBlockFile {
 
         save();
         for (Player player : Bukkit.getOnlinePlayers()){
-            player.sendMessage(Messages.format("&6&lBazinga&e&lBlocks &8» &7Reloaded the plugin and checked for updates."));
+            if (player.hasPermission("bazingablock.admin")) {
+                player.sendMessage(Messages.format("&6&lBazinga&e&lBlocks &8» &7Reloaded the plugin and checked for updates."));
+            }
         }
 
     }

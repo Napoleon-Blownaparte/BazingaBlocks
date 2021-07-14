@@ -26,12 +26,12 @@ public class LuckyBlockCommand implements CommandExecutor {
             if (label.equalsIgnoreCase("bb")) {
                 if (player.hasPermission("bazingablock.admin")) {
                     if (args.length > 0) {
-                        if (player.hasPermission("bazingablock.create")){
-                            if (args[0].equalsIgnoreCase("create")) {
+                        if (args[0].equalsIgnoreCase("create")) {
+                            if (player.hasPermission("bazingablock.create")) {
                                 LuckyBlockCreateMenu.open(player);
                             }
-                        } else if (player.hasPermission("bazingablock.reload")){
-                            if (args[0].equalsIgnoreCase("reload")) {
+                        } else if (args[0].equalsIgnoreCase("reload")) {
+                            if (player.hasPermission("reload")) {
                                 LuckyBlockFile.reload();
                             }
                         }
@@ -40,17 +40,17 @@ public class LuckyBlockCommand implements CommandExecutor {
                         Messages.sendJSON(player, "                            &6&lBazinga&e&lBlocks", ClickEvent.Action.OPEN_URL, "https://www.spigotmc.org/resources/bazingablocks-1-16-1-17-configurable-lucky-blocks-great-for-prison-servers.94241/",
                                 " &8» &7Author: &e" + auth + "\n &8» &7Version: &e" + ver);
                         player.sendMessage("");
-                        Messages.sendJSON(player, " &8» &6/bb &ecreate&8: &7Create a Lucky Block", ClickEvent.Action.RUN_COMMAND, "/bb create", "&7Required Permission &8» &bazingablock.create");
-                        Messages.sendJSON(player, " &8» &6/bb &ereload&8: &7Reload the plugin", ClickEvent.Action.RUN_COMMAND, "/bb reload", "&7Required Permission &8» &bazingablock.reload");
+                        Messages.sendJSON(player, " &8» &6/bb &ecreate&8: &7Create a Lucky Block", ClickEvent.Action.RUN_COMMAND, "/bb create", "&7Required Permission &8» &cbazingablock.create");
+                        Messages.sendJSON(player, " &8» &6/bb &ereload&8: &7Reload the plugin", ClickEvent.Action.RUN_COMMAND, "/bb reload", "&7Required Permission &8» &cbazingablock.reload");
                         player.sendMessage("");
                     }
+                }
 
                 } else {
                     Messages.format("&4Error &8» &cYou don't have access to that command!");
                 }
 
             }
-        }
         return false;
     }
 
